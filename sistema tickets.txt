@@ -1,0 +1,464 @@
+COMANDO !SETTICKET
+
+{
+  "name": "!setticket",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "XjzXF",
+  "actions": [
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "2",
+      "varName": "id",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "9",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:check:807335109853839360> Categoria dos Tickets: ${serverVars(\"id\")}",
+      "storage": "1",
+      "varName2": "setaridmessage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "storage": "2",
+      "varName": "id",
+      "name": "Save Variable"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "setaridmessage",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:cross:808700454274990130> ${member} Não tens permissão para usar este comando.",
+      "storage": "1",
+      "varName2": "nopermmesage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "nopermmesage",
+      "reason": "",
+      "name": "Delete Message"
+    }
+  ],
+  "comType": "0"
+}
+
+
+
+
+
+
+
+COMANDO !TICKET
+
+
+{
+  "name": "!ticket",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "fFQCN",
+  "actions": [
+    {
+      "storage": "0",
+      "varName": "",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "storage": "2",
+      "varName": "id",
+      "comparison": "4",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "13",
+      "name": "Check Variable"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "ticket",
+      "changeType": "1",
+      "value": "1",
+      "name": "Control Server Data"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "ticket",
+      "defaultVal": "0",
+      "storage": "1",
+      "varName2": "data",
+      "name": "Store Server Data"
+    },
+    {
+      "channelName": "ticket ${tempVars(\"data\")}",
+      "topic": "Ticket de ${member}",
+      "position": "",
+      "storage": "1",
+      "varName": "channel",
+      "categoryID": "${serverVars(\"id\")}",
+      "reason": "",
+      "name": "Create Text Channel"
+    },
+    {
+      "channel": "3",
+      "varName": "channel",
+      "member": "1",
+      "varName2": "",
+      "permission": "VIEW_CHANNEL",
+      "state": "0",
+      "reason": "",
+      "name": "Set Member Channel Perms"
+    },
+    {
+      "channel": "3",
+      "varName": "channel",
+      "member": "1",
+      "varName2": "",
+      "permission": "SEND_MESSAGES",
+      "state": "0",
+      "reason": "",
+      "name": "Set Member Channel Perms"
+    },
+    {
+      "channel": "5",
+      "varName": "channel",
+      "message": "${member}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "title": "Ticket",
+      "author": "",
+      "color": "#32a852",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "Bem-vindo ao nosso sistema de tickets.\nAguarda uma resposta da nossa equipa.\n\nPara fechar o ticket escreva:\n``!closeticket``",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "5",
+      "varName2": "channel",
+      "storage3": "0",
+      "varName3": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:cross:808700454274990130> **Este sistema não foi configurado. Peça a um administrador para configurar este sistema antes de tentar novamente.**",
+      "storage": "1",
+      "varName2": "noconfigmessage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "noconfigmessage",
+      "reason": "",
+      "name": "Delete Message"
+    }
+  ],
+  "comType": "0"
+}
+
+
+
+
+
+
+
+
+
+
+COMANDO !ADDMEMBER
+
+{
+  "name": "!addmember",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "Shrdl",
+  "actions": [
+    {
+      "info": "2",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "membro",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "10",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "member": "0",
+      "varName2": "",
+      "permission": "VIEW_CHANNEL",
+      "state": "0",
+      "reason": "",
+      "name": "Set Member Channel Perms"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "member": "0",
+      "varName2": "",
+      "permission": "SEND_MESSAGES",
+      "state": "0",
+      "reason": "",
+      "name": "Set Member Channel Perms"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:check:807335109853839360> Membro ${mentionedUser} Adicionado com sucesso!",
+      "storage": "1",
+      "varName2": "messageadded",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "messageadded",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:cross:808700454274990130> ${member} Não tens permissão para usar este comando.",
+      "storage": "1",
+      "varName2": "nopermsmessage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "nopermsmessage",
+      "reason": "",
+      "name": "Delete Message"
+    }
+  ],
+  "comType": "0"
+}
+
+
+
+
+
+
+
+
+
+
+
+COMANDO !CLOSETICKET
+
+{
+  "name": "!closeticket",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "ECman",
+  "actions": [
+    {
+      "storage": "0",
+      "varName": "",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "storage": "2",
+      "varName": "id",
+      "comparison": "4",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "12",
+      "name": "Check Variable"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "ADMINISTRATOR",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "8",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<:timer:807239387850735617> Este ticket vai ser fechado em 5 segundos.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "reason": "Ticket Encerrado por ${member}",
+      "name": "Delete Channel"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:cross:808700454274990130> ${member} Não tens permissão para usar este comando.",
+      "storage": "1",
+      "varName2": "nopermsmessage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "nopermsmessage",
+      "reason": "",
+      "name": "Delete Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:cross:808700454274990130> **Este sistema não foi configurado. Peça a um administrador para configurar este sistema antes de tentar novamente.**",
+      "storage": "1",
+      "varName2": "noconfigmessage",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "time": "5",
+      "measurement": "1",
+      "name": "Wait"
+    },
+    {
+      "storage": "1",
+      "varName": "noconfigmessage",
+      "reason": "",
+      "name": "Delete Message"
+    }
+  ]
+}
